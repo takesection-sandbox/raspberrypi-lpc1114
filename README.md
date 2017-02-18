@@ -1,0 +1,4 @@
+
+make CFLAGS="-Wall -DGPIO_ISP=23 -DGPIO_RST=18"
+
+
