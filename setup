@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Configure -ISP signal
+echo 23 >/sys/class/gpio/export
+echo out >/sys/class/gpio/gpio23/direction
+echo 1 >/sys/class/gpio/gpio23/value
+chown root.gpio /sys/class/gpio/gpio23/value
+chmod 660 /sys/class/gpio/gpio23/value
+
+# Configure -RST signal
+echo 18 >/sys/class/gpio/export
+echo out >/sys/class/gpio/gpio18/direction
+echo 1 >/sys/class/gpio/gpio18/value
+chown root.gpio /sys/class/gpio/gpio18/value
+chmod 660 /sys/class/gpio/gpio18/value
