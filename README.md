@@ -19,13 +19,13 @@ Raspberry Pi から LPC1114 への書き込み
 ## Unarchive
 
 ```
-$ tar xvzf ~/Downloads/lpc21isp_XXX.tar.gz
+$ tar xvzf ~/Downloads/lpc21isp_197.tar.gz
 ```
 
 ## Build
 
 ```
-$ cd lpc21isp_XXX
+$ cd lpc21isp_197
 $ make CFLAGS="-Wall -DGPIO_ISP=23 -DGPIO_RST=18"
 ```
 
