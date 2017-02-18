@@ -1,15 +1,31 @@
 Raspberry Pi から LPC1114 への書き込み
 ---
 
+* [Raspberry Pi](https://www.raspberrypi.org/)
+* [LPC1114](http://www.nxp.com/products/microcontrollers-and-processors/arm-processors/lpc-mcus/lpc1100-cortex-m0-plus-m0/scalable-entry-level-32-bit-microcontroller-mcu-based-on-arm-cortex-m0-plus-m0-cores:LPC1114FN28)
+
+# Raspberry Pi と LPC1114の配線
+
+* [RPi_LPC1114](RPi_LPC1114.fzz)
+
+![RPi_LPC1114](RPi_LPC1114.png)
+
 # lpc21isp のコンパイル
 
 ## Download
 
 * [lpc21isp](https://sourceforge.net/projects/lpc21isp/)
 
+## Unarchive
+
+```
+$ tar xvzf ~/Downloads/lpc21isp_XXX.tar.gz
+```
+
 ## Build
 
 ```
+$ cd lpc21isp_XXX
 $ make CFLAGS="-Wall -DGPIO_ISP=23 -DGPIO_RST=18"
 ```
 
@@ -33,7 +49,7 @@ chown root.gpio /sys/class/gpio/gpio18/value
 chmod 660 /sys/class/gpio/gpio18/value
 ```
 
-## プロジェクトの作成
+# プロジェクトの作成
 
 [platformio](http://platformio.org/) を使ってビルドします
 
@@ -41,32 +57,13 @@ chmod 660 /sys/class/gpio/gpio18/value
 $ platformio init --board=lpc1114fn28
 ```
 
-## コード
-
-src/main.cpp
-
-```cpp
-#include "mbed.h"
-
-DigitalOut myled(LED1);
-
-int main() {
-    while(1) {
-        myled = 1;
-        wait(0.5);
-        myled = 0;
-        wait(0.5);
-    }
-}
-```
-
-## コンパイル
+# コンパイル
 
 ```
 $ platformio run
 ```
 
-## 書き込み
+# 書き込み
 
 ```
 lpc21isp -control -bin .pioenvs/lpc1114fn28/firmware.bin \
