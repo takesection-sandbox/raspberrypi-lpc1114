@@ -1,4 +1,4 @@
-Raspberry Pi から LPC1114 への書き込み
+Raspberry Pi から LPC1114(mbed) への書き込み
 ---
 
 * [Raspberry Pi](https://www.raspberrypi.org/)
